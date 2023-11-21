@@ -1,0 +1,165 @@
+digraph Couriers {
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+node [
+fontname = "Bitstream Vera Sans"
+fontsize = 8
+shape ="record"
+]
+Alumno [
+label ="{
+public Alumno|
++
+punteo :
+int\l
++
+siguiente :
+Alumno\l
++
+aplicacion :
+Aplicacion\l
++
+copiaEnunciado :
+EnunciadoProyecto1\l
+|
++
+Alumno(String nombre, int edad, double estatura, char sexo2, int carnet, int creditos, String correo) :
+\l
+}"
+]
+Aplicacion [
+label ="{
+public Aplicacion|
++
+terminado :
+String\l
++
+punteo :
+int\l
+|
+}"
+]
+Auxiliar [
+label ="{
+public Auxiliar|
++
+seccion :
+char\l
++
+cantidadAlumnos :
+int\l
++
+primerAlumno :
+Alumno\l
+-
+enundiado :
+EnunciadoProyecto1\l
+|
++
+Auxiliar(String nombre, int edad, double estatura, char sexo2, int carnet, int creditos, String correo) :
+\l
++
+Calificar() :
+void\l
+}"
+]
+EnunciadoProyecto1 [
+label ="{
+public EnunciadoProyecto1|
++
+texto :
+String\l
++
+punteo :
+int\l
+#
+fechaEntrega :
+Fecha\l
+|
++
+EnunciadoProyecto1(String texto, int punteo, Fecha fechaEntrega) :
+\l
+}"
+]
+Estudiante [
+label ="{
+public Estudiante|
++
+carnet :
+int\l
++
+creditos :
+int\l
++
+correo :
+String\l
+|
++
+Estudiante(String nombre, int edad, double estatura, char sexo2, int carnet, int creditos, String correo) :
+\l
++
+CalcularMayor(int edad) :
+boolean\l
+}"
+]
+Fecha [
+label ="{
+public Fecha|
++
+dia :
+int\l
++
+mes :
+int\l
++
+anio :
+int\l
+|
++
+Fecha() :
+\l
++
+Fecha(int dia, int mes, int anio) :
+\l
+}"
+]
+Persona [
+label ="{
+public Persona|
++
+nombre :
+String\l
++
+edad :
+int\l
++
+estatura :
+double\l
+#
+sexo :
+char\l
+-
+mayorEdad :
+boolean\l
+|
++
+Persona(String nombre, int edad, double estatura, char sexo2) :
+\l
+-
+CalcularMayor(int edad) :
+boolean\l
++
+getMayorEdad() :
+boolean\l
+}"
+]
+Estudiante -> Alumno [dir=back arrowtail = "empty"]
+Estudiante -> Auxiliar [dir=back arrowtail = "empty"]
+Persona -> Estudiante [dir=back arrowtail = "empty"]
+Alumno -> Alumno [dir=back arrowtail = "ediamond"]
+Alumno -> Aplicacion [dir=back arrowtail = "ediamond"]
+Alumno -> EnunciadoProyecto1 [dir=back arrowtail = "ediamond"]
+Auxiliar -> Alumno [dir=back arrowtail = "ediamond"]
+Auxiliar -> EnunciadoProyecto1 [dir=back arrowtail = "ediamond"]
+EnunciadoProyecto1 -> Fecha [dir=back arrowtail = "ediamond"]
+}
